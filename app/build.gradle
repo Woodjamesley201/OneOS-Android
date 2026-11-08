@@ -1,0 +1,32 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.oneos.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.oneos.app"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../keystore/oneos-release.keystore")
+            storePassword "oneos123"
+            keyAlias "oneos"
+            keyPassword "oneos123"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+}
